@@ -2,6 +2,8 @@ package com.teste.mvvmlabbooksapi.ui.books
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.teste.mvvmlabbooksapi.R
@@ -17,19 +19,19 @@ class BooksActivity : AppCompatActivity() {
         toolbar_main_id.title = getString(R.string.app_name)
         setSupportActionBar(toolbar_main_id)
 
-        with(recycler_books){
-            layoutManager = LinearLayoutManager(this@BooksActivity,RecyclerView.VERTICAL,false)
-            setHasFixedSize(true)
-            adapter = BooksAdapter(getBooks())
+        //IPC: it´s not possible pass params for inside viewModel
+        val viewModel: BooksViewModel = ViewModelProviders.of(this).get(BooksViewModel::class.java)
 
-        }
+        viewModel.booksLiveData.observe(this, Observer {
+            it?.let { books ->
+                with(recycler_books){
+                    layoutManager = LinearLayoutManager(this@BooksActivity,RecyclerView.VERTICAL,false)
+                    setHasFixedSize(true)
+                    adapter = BooksAdapter(books)
+                }
+            }
+       })
+        viewModel.getBooks()
     }
-    fun getBooks(): List<Book>{
-        return listOf(
-            Book("title1","autor1"),
-            Book("title2","autor2"),
-            Book("title3","autor3")
 
-        )
-    }
 }
