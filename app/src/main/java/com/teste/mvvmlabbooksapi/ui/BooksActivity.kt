@@ -1,12 +1,13 @@
-package com.teste.mvvmlabbooksapi
+package com.teste.mvvmlabbooksapi.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.teste.mvvmlabbooksapi.R
 
-class MainActivity : AppCompatActivity() {
+class BooksActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_books)
     }
 }
