@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">mvvmLabBooksApi</string>
+
+    <!-- BooksActivity -->
+    <string name="app_name">Books</string>
 </resources>
