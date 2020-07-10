@@ -1,11 +1,10 @@
 package com.teste.mvvmlabbooksapi.data.response
 
-import com.squareup.moshi.Json
-import com.squareup.moshi.JsonClass
+import com.google.gson.annotations.SerializedName
 
-@JsonClass(generateAdapter = true)
+
 data class BookBodyResponse(
-    @Json(name = "results")
+    @SerializedName("results")
     val bookResult: List<BookResultsResponse>
 )
 
